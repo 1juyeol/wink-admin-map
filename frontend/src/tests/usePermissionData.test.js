@@ -22,7 +22,7 @@ describe('usePermissionData Hook', () => {
         vi.clearAllMocks();
         fetch.mockResolvedValue({
             ok: true,
-            blob: async () => new Blob(['fake content']),
+            arrayBuffer: async () => new ArrayBuffer(8),
         });
     });
 

@@ -1,0 +1,17 @@
+# [Docker Compose] wink-admin-map 전체 스택을 한 번에 띄우기 위한 정의.
+#
+# 서버에서 실행할 명령은 이 파일 기준으로 단 한 줄:
+#   docker compose up --build -d
+#
+# 이 프로젝트는 백엔드/DB가 없는 순수 정적 SPA라 서비스가 frontend 하나뿐이다.
+# frontend가 npm run build → nginx 정적 서빙까지 전부 처리한다 (frontend/Dockerfile 참고).
+# 포트를 8091로 잡은 이유: 같은 서버에서 돌아갈 수 있는 teams-kanban-board가
+# 8090을 쓰고 있어서 충돌 방지 차원.
+
+services:
+  frontend:
+    build:
+      context: ./frontend
+    restart: unless-stopped
+    ports:
+      - "${NGINX_PORT:-8091}:80"

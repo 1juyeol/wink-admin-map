@@ -46,16 +46,15 @@ describe('useLayoutState Hook', () => {
         expect(localStorage.getItem('theme')).toBe(result.current.darkMode ? 'dark' : 'light');
     });
 
-    it('모달 상태 제어가 독립적으로 동작해야 한다 (Modal Test)', () => {
+    it('showDiff 모달 상태가 독립적으로 토글되어야 한다 (Modal Test)', () => {
+        // useLayoutState가 실제로 관리하는 모달 상태는 showDiff뿐임
+        // (showPersona/showAudit은 코드베이스 전체에 존재하지 않는 상태명 — 이전 테스트의 오기)
         const { result } = renderHook(() => useLayoutState());
 
         act(() => {
-            result.current.setShowPersona(true);
             result.current.setShowDiff(true);
         });
 
-        expect(result.current.showPersona).toBe(true);
         expect(result.current.showDiff).toBe(true);
-        expect(result.current.showAudit).toBe(false); // Should remain untouched
     });
 });
