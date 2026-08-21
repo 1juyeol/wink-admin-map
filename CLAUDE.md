@@ -47,6 +47,15 @@ Auth는 애초에 사용한 적이 없어(로그인은 `AccountManager.jsx`의 �
   vitest 환경 설정(jsdom, setupFiles) 추가, `frontend/e2e/ui.test.js`의 셀렉터를 실제 DOM
   기준으로 전면 교정 (검증 없이 짐작으로 작성돼 있었음)
 
+### 루트에 남아있던 옛 잔재 정리
+`frontend/` 재편 이후에도 루트에 남아있던 죽은 파일들을 삭제했다.
+- `src_backup_before_refactor/`, `src_backup_before_refactoring_final/` — 예전 리팩토링 이전
+  `src/` 백업 스냅샷 (지금 안 쓰는 컴포넌트까지 포함)
+- `update_excel.py`, `update_embedded_excel.mjs` — 엑셀을 base64로 코드에 박아넣던 옛 방식
+  (`embeddedExcel.js`)을 갱신하던 스크립트. 지금은 그 방식 자체를 안 쓰고(`permission_data.xlsx`를
+  런타임에 fetch) 코드 어디서도 참조하지 않아 완전히 죽어있었음
+- 빈 `docs/` 폴더, 오래된 루트 `test-results/`, 잘못 커밋됐던 `final_clean_build_log.txt` 삭제
+
 ---
 
 ## 프로젝트 정책

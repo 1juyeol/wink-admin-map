@@ -11,7 +11,7 @@ node_modules
 dist
 dist-ssr
 *.local
-frontend/test-results
+test-results
 playwright-report
 
 # Editor directories and files
